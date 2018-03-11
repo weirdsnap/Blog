@@ -1,0 +1,37 @@
+<!-- 
+    <div>
+        you are the {{.Number}} th visitor!<br>
+        hello! now it it {{.Time}}.
+        <input id="login_button" type="button" value="login">
+    </div> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snap Here</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+     
+</head>
+<body>
+        <div id="header" class="opacity70">
+            <ul class="title">
+                <li v-on:click="home">Snap</li>
+                <li v-on:click="github">Github</li>
+                <li>{{.Time}}</li>
+            </ul>
+        </div>
+        <div id="contents" class="opacity50">
+            <div id="name" >
+                <span v-on:click="jumpList" > {{ massage }} </span>
+            </div>
+        </div>
+        <div id="bottom" class="opacity70">
+            <span>2018-2018</span>
+        </div>
+    <script src="./scripts/index.js"></script>
+</body>
+</html>
