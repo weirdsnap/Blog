@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 
@@ -33,6 +32,7 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 	// get the os environment variable "WEBROOT", means the web server home
 	webRoot := os.Getenv("WEBROOT")
 
+	// deal with no os environment variable "WEBROOT"
 	if len(webRoot) == 0 {
 		if root, err := os.Getwd(); err != nil {
 			panic("Could not retrive working directory!")
@@ -42,25 +42,25 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 	}
 	// api test
 	mx.HandleFunc("/api/test", apiTestHandler(formatter)).Methods("GET")
-	//
+	// Home page
 	mx.HandleFunc("/", homeHandler(formatter)).Methods("GET")
 
 	mx.HandleFunc("/login", loginHandler(formatter)).Methods("GET", "post")
 
-	mx.HandleFunc("/{[a-zA-z]+}", unknowHandler())
-
 	// static file server , and dir redirected to webRoot/assets/
 	mx.PathPrefix("/").Handler(http.FileServer(http.Dir(webRoot + "/assets/")))
+
+	// mx.HandleFunc("/{[a-zA-z]+}", unknowHandler())
 
 	//	mx.HandleFunc("/hello/{id}", testHandler(formatter)).Methods("GET")
 }
 
-func unknowHandler() http.HandlerFunc {
-	return func(w http.ResponseWriter, req *http.Request) {
-		w.WriteHeader(501)
-		fmt.Fprint(w, "Not implemented")
-	}
-}
+// func unknowHandler() http.HandlerFunc {
+// 	return func(w http.ResponseWriter, req *http.Request) {
+// 		w.WriteHeader(501)
+// 		fmt.Fprint(w, "Not implemented")
+// 	}
+// }
 
 /*
 func testHandler(formatter *render.Render) http.HandlerFunc {

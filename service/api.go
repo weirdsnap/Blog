@@ -12,5 +12,6 @@ func apiTestHandler(formatter *render.Render) http.HandlerFunc {
 			ID      string `json:"id"`
 			Content string `json:"content"`
 		}{ID: "8675309", Content: "Hello from Go!"})
+		// formatter.JSON(w, http.StatusOK, "!somestruct")
 	}
 }

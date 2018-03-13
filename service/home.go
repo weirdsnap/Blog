@@ -12,6 +12,6 @@ func homeHandler(formatter *render.Render) http.HandlerFunc {
 		formatter.HTML(w, http.StatusOK, "index", struct {
 			// Number string `json:"Number"`
 			Time   string `json:"Time"`
-		}{ Time: string(time.Now().Year())})
+		}{ Time: time.Now().Format("2006-01-02")})
 	}
 }
