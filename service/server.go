@@ -51,7 +51,6 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 	mx.PathPrefix("/").Handler(http.FileServer(http.Dir(webRoot + "/assets/")))
 
 	// mx.HandleFunc("/{[a-zA-z]+}", unknowHandler())
-
 	//	mx.HandleFunc("/hello/{id}", testHandler(formatter)).Methods("GET")
 }
 
