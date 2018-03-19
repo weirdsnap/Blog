@@ -16,7 +16,7 @@ func init() {
 		panic(err)
 	}
 	mydb = db
-	mydb.Exec("CREATE TABLE userinfo (uid INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(64) NULL, password VARCHAR(64) NULL, tel VARCHAR(64) NULL, email VARCHAR(64) NULL);")
+	mydb.Exec("CREATE TABLE articleinfo (aid INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(64) NULL, class VARCHAR(64) NULL, content VARCHAR(6400) NULL);")
 
 }
 
