@@ -43,9 +43,9 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 	// api test
 	mx.HandleFunc("/api/test", apiTestHandler(formatter)).Methods("GET")
 	// Home page
-	mx.HandleFunc("/", homeHandler(formatter)).Methods("GET")
+	// mx.HandleFunc("/", homeHandler(formatter)).Methods("GET")
 
-	mx.HandleFunc("/login", loginHandler(formatter)).Methods("GET", "post")
+	// mx.HandleFunc("/login", loginHandler(formatter)).Methods("GET", "post")
 
 	// static file server , and dir redirected to webRoot/assets/
 	mx.PathPrefix("/").Handler(http.FileServer(http.Dir(webRoot + "/assets/")))
