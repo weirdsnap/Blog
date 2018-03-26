@@ -53,21 +53,3 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 	// mx.HandleFunc("/{[a-zA-z]+}", unknowHandler())
 	//	mx.HandleFunc("/hello/{id}", testHandler(formatter)).Methods("GET")
 }
-
-// func unknowHandler() http.HandlerFunc {
-// 	return func(w http.ResponseWriter, req *http.Request) {
-// 		w.WriteHeader(501)
-// 		fmt.Fprint(w, "Not implemented")
-// 	}
-// }
-
-/*
-func testHandler(formatter *render.Render) http.HandlerFunc {
-
-	return func(w http.ResponseWriter, req *http.Request) {
-		vars := mux.Vars(req)
-		id := vars["id"]
-		formatter.JSON(w, http.StatusOK, struct{ Test string }{"Hello " + id})
-	}
-}
-*/

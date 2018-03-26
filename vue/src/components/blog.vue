@@ -33,7 +33,7 @@ export default {
         alert(xmlhttp.responseText)
       }
     }
-    xmlhttp.open('GET', '//api//?id=' + message, true)
+    xmlhttp.open('GET', '/api/?id=' + message, true)
     xmlhttp.send()
   }
 }
