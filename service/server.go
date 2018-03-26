@@ -41,7 +41,7 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 		}
 	}
 	// api test
-	mx.HandleFunc("/api/test", apiTestHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/api/", apiTestHandler(formatter)).Methods("GET")
 	// Home page
 	// mx.HandleFunc("/", homeHandler(formatter)).Methods("GET")
 
