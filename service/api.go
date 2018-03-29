@@ -20,7 +20,7 @@ func apiTestHandler(formatter *render.Render) http.HandlerFunc {
 			formatter.JSON(w, http.StatusOK, struct {
 				CONTENT string `json:"content"`
 				ID string `json:"id"`
-			}{CONTENT: "tebiechangdeyiduanhua",ID: id[0]})
+			}{CONTENT: "# 123 \n ## 321 \n",ID: id[0]})
 		}
 	}
 }

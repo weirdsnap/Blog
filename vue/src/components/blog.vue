@@ -2,12 +2,12 @@
   <div>
     <!-- todo: turn the aid to the article  {{message}}  -->
     <div> {{title}} </div>
-    <div id="c">
-      {{body}}
+    <div id="c" v-html="body">
     </div>
   </div>
 </template>
 <script>
+import marked from 'marked'
 export default {
   props: ['message'],
   data: function () {
@@ -28,8 +28,21 @@ export default {
     xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
         alert(xmlhttp.responseText)
-        let str = JSON.parse(xmlhttp.responseText)
-        that.bogy += str
+        let obj = JSON.parse(xmlhttp.responseText)
+        let str = obj.content
+        // let str = marked('# asd\n## 1233412')
+        var rendererMD = new marked.Renderer()
+        marked.setOptions({
+          renderer: rendererMD,
+          gfm: true,
+          tables: true,
+          breaks: false,
+          pedantic: false,
+          sanitize: false,
+          smartLists: true,
+          smartypants: false
+        })
+        that.body = marked(str)
       }
     }
     xmlhttp.open('GET', '/api/?id=' + message, true)
@@ -40,6 +53,7 @@ export default {
 <style>
 #c {
   width: 600px;
+  margin: auto;
   overflow: auto;
 }
 </style>
