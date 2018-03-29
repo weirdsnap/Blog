@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- todo: turn the aid to the article  {{message}}  -->
-    <div>{{title}}</div>
+    <div> {{title}} </div>
     <div id="c">
       {{body}}
     </div>
@@ -12,25 +12,24 @@ export default {
   props: ['message'],
   data: function () {
     return {
-      title: '',
-      body: ''
+      title: '123',
+      body: '321'
     }
   },
   created: function (message) {
-    // todo : use message send req to get the md
+    // todo : ajax / use message send req to get the md
     let xmlhttp
+    let that = this
     if (window.XMLHttpRequest) {
       //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
       xmlhttp = new XMLHttpRequest()
-    } else {
-      // IE6, IE5 浏览器执行代码
-      // xmlhttp=new ActiveXObject('Microsoft.XMLHTTP')
     }
     // 绑定事件处理函数
     xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-      // document.getElementById('myDiv').innerHTML=xmlhttp.responseText
         alert(xmlhttp.responseText)
+        let str = JSON.parse(xmlhttp.responseText)
+        that.bogy += str
       }
     }
     xmlhttp.open('GET', '/api/?id=' + message, true)

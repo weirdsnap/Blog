@@ -26,7 +26,7 @@
       </ul>
     </div>
     <div class="content opacity50">
-      <router-view v-on:onBlogSelect="jumpBlog($event)" v-bind:message="aid"></router-view>
+      <router-view v-on:onBlogSelect="jumpBlog($event)" v-bind:message="aid" v-on:onNameCLick="jumplist()"></router-view>
     </div>
   </div>
 </template>
@@ -45,6 +45,9 @@ export default {
     jumpBlog (item) {
       this.aid = item.aid
       router.push({name: 'blog', params: {id: item.aid}})
+    },
+    jumplist () {
+      router.push({name: 'BlogList'})
     }
   }
 }

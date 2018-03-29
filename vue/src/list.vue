@@ -17,13 +17,13 @@ export default {
   },
   created () {
     // todo: 向后台异步获取博客数据存入items，并使用nextTick进行处理。
-    console.log('created')
-  },
-  methods: {
-    jumpToBlog (item) {
-      console.log(item.aid)
-    }
+    // console.log('list created')
   }
+  // methods: {
+  //   jumpToBlog (item) {
+  //     console.log(item.aid)
+  //   }
+  // }
 }
 </script>
 <style>

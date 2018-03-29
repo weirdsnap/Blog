@@ -8,23 +8,19 @@ import (
 
 func apiTestHandler(formatter *render.Render) http.HandlerFunc {
 
-	// return func(w http.ResponseWriter, req *http.Request) {
-	// 	formatter.JSON(w, http.StatusOK, struct {
-	// 		ID      string `json:"id"`
-	// 		Content string `json:"content"`
-	// 	}{ID: "8675309", Content: "Hello from Go!"})
-	// 	// formatter.JSON(w, http.StatusOK, "!somestruct")
-	// }
-
 	return func(w http.ResponseWriter, req *http.Request) {
 		req.ParseForm()
 		id := req.Form["id"]
-		// password := req.Form["password"]
 		fmt.Println("id:", id)
-		// if () {
-		formatter.JSON(w, http.StatusOK, struct {
-			CONTENT string `json:"content"`
-		}{CONTENT: "tebiechangdeyiduanhua"})
-		// }
+		// todo :
+		// check the id 
+		// search the id in db
+		// return the content of this id
+		if (len(id) != 0) {
+			formatter.JSON(w, http.StatusOK, struct {
+				CONTENT string `json:"content"`
+				ID string `json:"id"`
+			}{CONTENT: "tebiechangdeyiduanhua",ID: id[0]})
+		}
 	}
 }
