@@ -25,7 +25,7 @@
         </li>
       </ul>
     </div>
-    <div class="content opacity60">
+    <div class="content opacity70">
       <router-view v-on:onBlogSelect="jumpBlog($event)" v-bind:message="aid" v-on:onNameCLick="jumplist()"></router-view>
     </div>
   </div>
@@ -63,6 +63,7 @@ body {
   background: url("./assets/background1.jpg");
   background-size:100%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
