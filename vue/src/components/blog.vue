@@ -1,8 +1,6 @@
 <template>
   <div>
-    <!-- todo: turn the aid to the article  {{message}}  -->
-    <div> {{title}} </div>
-    <div id="c" v-html="body">
+    <div id="c" v-html="body" class="markdown-body">
     </div>
   </div>
 </template>
@@ -17,7 +15,7 @@ export default {
     }
   },
   created: function (message) {
-    // todo : ajax / use message send req to get the md
+    // [ajax] use message send req to get the md
     let xmlhttp
     let that = this
     if (window.XMLHttpRequest) {
@@ -27,10 +25,10 @@ export default {
     // 绑定事件处理函数
     xmlhttp.onreadystatechange = function () {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-        alert(xmlhttp.responseText)
+        // alert(xmlhttp.responseText)
         let obj = JSON.parse(xmlhttp.responseText)
         let str = obj.content
-        // let str = marked('# asd\n## 1233412')
+        // let str = marked('# 大标题啊\n## 二标题啊1233412\n我这里想说几句话\n真的真的真的真的真的真的真的真的真的真的真的真的真的真的很多句话\n```lang=js\ndocument.get()\n```\n 但是呢\n 这样子\n 是不是不太好\n 其实应\n 该\n 多写\n一些的\nb\nc\na\nb\nc\n')
         var rendererMD = new marked.Renderer()
         marked.setOptions({
           renderer: rendererMD,
@@ -42,6 +40,7 @@ export default {
           smartLists: true,
           smartypants: false
         })
+        // todo: add highlight functiion
         that.body = marked(str)
       }
     }
@@ -51,9 +50,15 @@ export default {
 }
 </script>
 <style>
+h1,h2,h3,h4,h5,p {
+  margin:0;
+}
 #c {
-  width: 600px;
+  width: 70%;
   margin: auto;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 </style>

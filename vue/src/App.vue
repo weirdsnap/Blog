@@ -25,7 +25,7 @@
         </li>
       </ul>
     </div>
-    <div class="content opacity50">
+    <div class="content opacity60">
       <router-view v-on:onBlogSelect="jumpBlog($event)" v-bind:message="aid" v-on:onNameCLick="jumplist()"></router-view>
     </div>
   </div>
@@ -115,11 +115,11 @@ a {
   align-items: center;
 }
 
-.opacity50 {
-    filter: alpha(opacity : 50);
-    opacity:0.5;
-    -moz-opacity: 0.5;
-    -khtml-opacity:0.5;
+.opacity60 {
+    filter: alpha(opacity : 60);
+    opacity:0.6;
+    -moz-opacity: 0.6;
+    -khtml-opacity:0.6;
 }
 
 .opacity70 {
