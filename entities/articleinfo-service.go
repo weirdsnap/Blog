@@ -25,13 +25,13 @@ func (*ArticleInfoAtomicService) Save(u *ArticleInfo) error {
 }
 
 // FindAll .
-func (*ArticleInfoAtomicService) FindAll() []ArticleInfo {
+func (*ArticleInfoAtomicService) FindAll() []articleInfo {
 	dao := articleInfoDao{mydb}
 	return dao.FindAll()
 }
 
-// FindByUsername .
-func (*UserInfoAtomicService) FindByUsername(username string) *UserInfo {
-	dao := userInfoDao{mydb}
-	return dao.FindByUsername(username)
+// FindByTitle .
+func (*ArticleInfoAtomicService) FindByTitle(title string) *articleInfo {
+	dao := articleInfoDao{mydb}
+	return dao.FindByTitle(title)
 }

@@ -2,11 +2,11 @@ package entities
 
 type articleInfoDao DaoSource
 
-var userInfoInsertStmt = "INSERT INTO articleinfo(username,password,tel,email) values(?,?,?,?)"
+var articleInfoInsertStmt = "INSERT INTO articleinfo(username,password,tel,email) values(?,?,?,?)"
 
 // Save .
-func (dao *userInfoDao) Save(u *UserInfo) error {
-	stmt, err := dao.Prepare(userInfoInsertStmt)
+func (dao *articleinfoInfoDao) Save(u *ArticleinfoInfo) error {
+	stmt, err := dao.Prepare(articleinfoInfoInsertStmt)
 	checkErr(err)
 	defer stmt.Close()
 
