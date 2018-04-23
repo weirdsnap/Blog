@@ -80,8 +80,6 @@ body {
   }
 }
 
-
-
 #app {
   margin: 0px;
   height: 100%;
