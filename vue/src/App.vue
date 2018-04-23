@@ -59,19 +59,28 @@ html {
 }
 
 body {
-  height: 100%;
   background: url("./assets/background1.jpg");
-  background-size:100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-position-x: 40%;
+  height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 15px;
+  font-size: 10px;
   text-align: center;
   color: black;
   margin: 0;
 }
+
+@media screen and (min-device-width: 600px){
+  body {
+    background-size:100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-size: 16px;
+  }
+}
+
+
 
 #app {
   margin: 0px;
