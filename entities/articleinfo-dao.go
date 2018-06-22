@@ -2,15 +2,15 @@ package entities
 
 type articleInfoDao DaoSource
 
-var articleInfoInsertStmt = "INSERT INTO articleinfo(username,password,tel,email) values(?,?,?,?)"
+var articleInfoInsertStmt = "INSERT INTO articleinfo(aid,title,class,content) values(?,?,?,?)"
 
 // Save .
-func (dao *articleinfoInfoDao) Save(u *ArticleinfoInfo) error {
+func (dao *articleinfoInfoDao) Save(a *ArticleinfoInfo) error {
 	stmt, err := dao.Prepare(articleinfoInfoInsertStmt)
 	checkErr(err)
 	defer stmt.Close()
 
-	res, err := stmt.Exec(u.Username, u.Password, u.Tel,u.Email)
+	res, err := stmt.Exec(a.AID, a.Title, a.Class, a.Content)
 	checkErr(err)
 	if err != nil {
 		return err
@@ -23,50 +23,52 @@ func (dao *articleinfoInfoDao) Save(u *ArticleinfoInfo) error {
 	return nil
 }
 
-var userInfoQueryAll = "SELECT * FROM userinfo"
-var userInfoQueryByID = "SELECT * FROM userinfo where uid = ?"
-var userInfoQueryByUsername = "SELECT * FROM userinfo where username = ?"
+var articleInfoQueryAll = "SELECT * FROM articleinfo"
+var articleInfoQueryByID = "SELECT * FROM articleinfo where aid = ?"
+var articleInfoQueryByTitle = "SELECT * FROM articleinfo where title = ?"
 
 // FindAll .
-func (dao *userInfoDao) FindAll() []UserInfo {
-	rows, err := dao.Query(userInfoQueryAll)
+func (dao *articleInfoDao) FindAll() []ArticleInfo {
+	rows, err := dao.Query(articleInfoQueryAll)
 	checkErr(err)
 	defer rows.Close()
 
-	ulist := make([]UserInfo, 0, 0)
+	alist := make([]ArticleInfo, 0, 0)
+	
 	for rows.Next() {
-		u := UserInfo{}
-		err := rows.Scan(&u.UID, &u.Username, &u.Password, &u.Tel, u.Email)
+		a := ArticleInfo{}
+		err := rows.Scan(&a.AID, &a.Title, &a.Class, &a.Content)
 		checkErr(err)
-		ulist = append(ulist, u)
+		alist = append(alist, a
 	}
-	return ulist
+
+	return alist
 }
 
 // FindByID .
-func (dao *userInfoDao) FindByID(id int) *UserInfo {
-	stmt, err := dao.Prepare(userInfoQueryByID)
+func (dao *articleInfoDao) FindByID(id int) *ArticleInfo {
+	stmt, err := dao.Prepare(articleInfoQueryByID)
 	checkErr(err)
 	defer stmt.Close()
 
 	row := stmt.QueryRow(id)
-	u := UserInfo{}
-	err = row.Scan(&u.UID, &u.Username, &u.Password, &u.Tel, u.Email)
+	a := ArticleInfo{}
+	err = row.Scan(&a.AID, &a.Title, &a.Class, &a.Content)
 	checkErr(err)
 
-	return &u
+	return &a
 }
 
-// FindByUsername .
-func (dao *userInfoDao) FindByUsername(Username string) *UserInfo {
-	stmt, err := dao.Prepare(userInfoQueryByUsername)
+// FindByTitle .
+func (dao *articleInfoDao) FindByTitle(Title string) *ArticleInfo {
+	stmt, err := dao.Prepare(articleInfoQueryByTitle)
 	checkErr(err)
 	defer stmt.Close()
 
-	row := stmt.QueryRow(Username)
-	u := UserInfo{}
-	err = row.Scan(&u.UID, &u.Username, &u.Password, &u.Tel, &u.Email)
+	row := stmt.QueryRow(Title)
+	a := ArticleInfo{}
+	err = row.Scan(&a.AID, &a.Title, &a.Class, &a.Content)	
 	checkErr(err)
 
-	return &u
+	return &a
 }
