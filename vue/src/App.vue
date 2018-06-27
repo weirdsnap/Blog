@@ -15,7 +15,7 @@
         </li>
         <li>
           <router-link :to="{name: 'BlogList'}">
-            Details
+            Blogs
           </router-link>
         </li>
         <li>
@@ -117,7 +117,7 @@ a {
   height: 100%;
   color: whitesmoke;
   text-decoration: none;
-  font-size: 2em;
+  font-size: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
