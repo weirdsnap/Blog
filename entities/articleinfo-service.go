@@ -9,13 +9,13 @@ var ArticleInfoService = ArticleInfoAtomicService{}
 
 // Save
 // function
-// on the *ArticleInfoAtomicService 
+// on the *ArticleInfoAtomicService
 func (*ArticleInfoAtomicService) Save(u *ArticleInfo) error {
 
 	tx, err := mydb.Begin()
 	checkErr(err)
 	// fmt.Println("开始保存")
-	dao := ArticleInfoDao{tx}
+	dao := articleInfoDao{tx}
 	err = dao.Save(u)
 
 	if err == nil {
@@ -27,13 +27,13 @@ func (*ArticleInfoAtomicService) Save(u *ArticleInfo) error {
 }
 
 // FindAll .
-func (*ArticleInfoAtomicService) FindAll() []articleInfo {
+func (*ArticleInfoAtomicService) FindAll() []ArticleInfo {
 	dao := articleInfoDao{mydb}
 	return dao.FindAll()
 }
 
 // FindByTitle .
-func (*ArticleInfoAtomicService) FindByTitle(title string) *articleInfo {
+func (*ArticleInfoAtomicService) FindByTitle(title string) *ArticleInfo {
 	dao := articleInfoDao{mydb}
 	return dao.FindByTitle(title)
 }

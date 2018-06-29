@@ -5,8 +5,8 @@ type articleInfoDao DaoSource
 var articleInfoInsertStmt = "INSERT INTO articleinfo(aid,title,class,content) values(?,?,?,?)"
 
 // Save .
-func (dao *articleinfoInfoDao) Save(a *ArticleinfoInfo) error {
-	stmt, err := dao.Prepare(articleinfoInfoInsertStmt)
+func (dao *articleInfoDao) Save(a *ArticleInfo) error {
+	stmt, err := dao.Prepare(articleInfoInsertStmt)
 	checkErr(err)
 	defer stmt.Close()
 
@@ -19,7 +19,7 @@ func (dao *articleinfoInfoDao) Save(a *ArticleinfoInfo) error {
 	if err != nil {
 		return err
 	}
-	u.UID = int(id)
+	a.AID = int(id)
 	return nil
 }
 
@@ -34,12 +34,12 @@ func (dao *articleInfoDao) FindAll() []ArticleInfo {
 	defer rows.Close()
 
 	alist := make([]ArticleInfo, 0, 0)
-	
+
 	for rows.Next() {
 		a := ArticleInfo{}
 		err := rows.Scan(&a.AID, &a.Title, &a.Class, &a.Content)
 		checkErr(err)
-		alist = append(alist, a
+		alist = append(alist, a)
 	}
 
 	return alist
@@ -67,7 +67,7 @@ func (dao *articleInfoDao) FindByTitle(Title string) *ArticleInfo {
 
 	row := stmt.QueryRow(Title)
 	a := ArticleInfo{}
-	err = row.Scan(&a.AID, &a.Title, &a.Class, &a.Content)	
+	err = row.Scan(&a.AID, &a.Title, &a.Class, &a.Content)
 	checkErr(err)
 
 	return &a
