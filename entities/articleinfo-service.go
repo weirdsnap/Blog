@@ -1,13 +1,15 @@
 package entities
 
 // import ("fmt")
-//ArticleInfoAtomicService .
+// Article Info Atomic Service .
 type ArticleInfoAtomicService struct{}
 
-//ArticleInfoService .
+// Article Info Service .
 var ArticleInfoService = ArticleInfoAtomicService{}
 
-// Save .
+// Save
+// function
+// on the *ArticleInfoAtomicService 
 func (*ArticleInfoAtomicService) Save(u *ArticleInfo) error {
 
 	tx, err := mydb.Begin()
