@@ -1,0 +1,50 @@
+html, body {
+  height: 100%;
+  margin:0;
+  padding:0;
+}
+
+
+#app {
+  height: 100%;
+}
+
+#navbar {
+  height: 40px;
+  background-color: #888888;
+}
+
+#navbar span{
+  line-height: 40px;    /* 设置行高等于父元素，垂直居中行内元素*/
+}
+
+*.container {
+  padding: 0 0 0 200px; /*留出左侧空白*/
+  min-width: 150px;
+}
+
+*.main,*.left {
+  float: left;
+  position: relative;
+  height: 100%;
+}
+
+*.main {
+  width: 100%;
+  background-color: #cccccc;
+}
+
+*.left {
+  width: 200px;
+  margin-left: -100%;             /* 利用负边距将left提到上一行(与main左侧重合) */
+  left: -200px;                   /* 调整左侧到左padding留出的空白 */
+  background-color: #888888;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
