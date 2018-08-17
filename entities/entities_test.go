@@ -5,7 +5,6 @@ import (
 )
 
 func Test_init(t *testing.T) {
-	init()
 	// a := NewArticleInfo(ArticleInfo{AID: 123, Title: "asd", Class: "asd", Content: "asd"})
 	
 	// if e := ArticleInfoService.Save(a); e != nil {
