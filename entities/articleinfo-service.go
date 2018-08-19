@@ -1,6 +1,9 @@
 package entities
 
-// import ("fmt")
+import (
+	"fmt"
+)
+
 // Article Info Atomic Service .
 type ArticleInfoAtomicService struct{}
 
@@ -30,6 +33,13 @@ func (*ArticleInfoAtomicService) Save(u *ArticleInfo) error {
 func (*ArticleInfoAtomicService) FindAll() []ArticleInfo {
 	dao := articleInfoDao{mydb}
 	return dao.FindAll()
+}
+
+// FindByID .
+func (*ArticleInfoAtomicService) FindByID(id int) *ArticleInfo {
+	dao := articleInfoDao{mydb}
+	fmt.Println("开始寻找", id)
+	return dao.FindByID(id)
 }
 
 // FindByTitle .
