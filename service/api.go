@@ -7,7 +7,7 @@ import (
 	"github.com/weirdsnap/Blog/entities"
 )
 
-func apiTestHandler(formatter *render.Render) http.HandlerFunc {
+func apiGetByIdHandler(formatter *render.Render) http.HandlerFunc {
 
 	return func(w http.ResponseWriter, req *http.Request) {
 		req.ParseForm()

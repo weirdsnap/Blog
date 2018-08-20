@@ -7,15 +7,17 @@
 <script>
 import marked from 'marked'
 export default {
-  props: ['message'],
   data: function () {
     return {
+      aid: 123,
       title: '123',
       body: '321'
     }
   },
-  created: function (message) {
-    // [ajax] use message send req to get the md
+  created: function () {
+    const aId = this.$route.params.id
+
+    // [ajax] use aId send req to get the md
     let xmlhttp
     let that = this
     if (window.XMLHttpRequest) {
@@ -43,7 +45,8 @@ export default {
         that.body = marked(str)
       }
     }
-    xmlhttp.open('GET', '/api/?id=' + message, true)
+    xmlhttp.open('GET', '/test/api/?id=' + aId, true) // when test
+    // xmlhttp.open('GET', '/api/?id=' + aId, true) // when build
     xmlhttp.send()
   }
 }

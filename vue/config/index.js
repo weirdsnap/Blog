@@ -10,7 +10,19 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+
+    // 20180820 modofied by Snap
+    // !! added this item to fix the origin problem !! ~~~
+    // use this `^/test` match any and change to `/`
+    proxyTable: {
+      '/test': {
+        target: 'http://weirdsnap.top:8888', // set the host and port for test,and dont forget the http
+        changeOrigin: true,
+        pathRewrite: {
+          '^/test': '/'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
