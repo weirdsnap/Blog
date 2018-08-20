@@ -39,10 +39,10 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 			webRoot = root
 		}
 	}
-	// api test
+	// api 
 	mx.HandleFunc("/api/getbyid/", apiGetByIdHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/api/getall", apiGetAllHandler(formatter)).Methods("GET")
 	// mx.HandleFunc("/api/getall", apiTestHandler(formatter)).Methods("GET")
-
 
 	// static file server , and dir redirected to webRoot/assets/
 	mx.PathPrefix("/").Handler(http.FileServer(http.Dir(webRoot + "/assets/")))

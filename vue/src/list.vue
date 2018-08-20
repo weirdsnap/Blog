@@ -18,14 +18,14 @@ export default {
   created () {
     this.$http.get('/test/api/')
       .then((data) => {
-        const movies = data.body.data.movies
-        movies.forEach((item) => {
+        // const movies = data.body.data.movies
+        // movies.forEach((item) => {
           // use reduce: array to string
-          item.actors = item.actors.reduce((acc, item) => acc + ' ' + item)
-          item.movieId = item.movie_id
-        })
-        console.log(movies)
-        this.movielist = movies
+          // item.actors = item.actors.reduce((acc, item) => acc + ' ' + item)
+          // item.movieId = item.movie_id
+        // })
+        // console.log(movies)
+        // this.movielist = movies
       })
     // todo: 向后台异步获取博客数据存入items，并使用nextTick进行处理。
     // console.log('list created')

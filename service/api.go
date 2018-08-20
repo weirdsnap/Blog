@@ -16,9 +16,8 @@ func apiGetByIdHandler(formatter *render.Render) http.HandlerFunc {
 		fmt.Println("id:", id)
 		// todo :
 		// check the id
-		// search the id in db
-		// return the content of this id
 		intid, _ := strconv.Atoi(id[0])
+		// search the id in db, return the content of this id
 		if a := entities.ArticleInfoService.FindByID(intid); a != nil {
 			formatter.JSON(w, http.StatusOK, struct {
 				CONTENT string `json:"content"`
@@ -32,5 +31,17 @@ func apiGetByIdHandler(formatter *render.Render) http.HandlerFunc {
 		// 		ID string `json:"id"`
 		// 	}{CONTENT: "xxxxxxxxxxxxxxxxx",ID: id[0]})
 		// }
+	}
+}
+
+
+func apiGetAllHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		// func (*ArticleInfoAtomicService) FindAll() []ArticleInfo {}
+		if articles := entities.ArticleInfoService.FindAll(); articles != nil {
+			formatter.JSON(w, http.StatusOK, struct {
+				ARTICLES struct `json:"articles"`
+			}{ARTICLES: a})
+		}
 	}
 }
