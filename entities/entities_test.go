@@ -12,9 +12,9 @@ func Test_init(t *testing.T) {
 	//	t.Log("save出错")
 	//}
 	//if e := ArticleInfoService.FindByTitle("asd"); e != nil {
-	if e := ArticleInfoService.FindByID(123); e != nil {
-		t.Error("find测试没通过", e)
+	if a := ArticleInfoService.FindByID(123); a != nil {
+		t.Log("find测试通过", a)
 	} else {
-		t.Log("find测试通过了")
+		t.Error("find测试为通过了")
 	}
 }
