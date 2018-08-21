@@ -39,14 +39,22 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 			webRoot = root
 		}
 	}
+	
 	// api 
+	// get one article by id, return an article {aid,title,class,content}
 	mx.HandleFunc("/api/getbyid/", apiGetByIdHandler(formatter)).Methods("GET")
+	// get all article, return all [{aid,title,class,content},...]
 	mx.HandleFunc("/api/getall", apiGetAllHandler(formatter)).Methods("GET")
-	// mx.HandleFunc("/api/getall", apiTestHandler(formatter)).Methods("GET")
+	// get articles by class, return those articles with that class [{aid,title,class,content},...]
+	// mx.HandleFunc("/api/getbyclass", apiGetByClassHandler(formatter)).Methods("GET")
+
+
+	// mx.HandleFunc("/api/somefunction", apisonefunctionHandler(formatter)).Methods("GETorPOST")
 
 	// static file server , and dir redirected to webRoot/assets/
 	mx.PathPrefix("/").Handler(http.FileServer(http.Dir(webRoot + "/assets/")))
 
+	// other function undone
 	// mx.HandleFunc("/{[a-zA-z]+}", unknowHandler())
 	//	mx.HandleFunc("/hello/{id}", testHandler(formatter)).Methods("GET")
 }

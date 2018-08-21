@@ -8,7 +8,6 @@
   </div>
 </template>
 <script>
-// new Vue (参数)
 export default {
   data () {
     return {
@@ -16,25 +15,16 @@ export default {
     }
   },
   created () {
-    this.$http.get('/test/api/')
+    // this.$http.get('/api/getall') // for build
+    this.$http.get('/test/api/getall') // for dev test
       .then((data) => {
-        // const movies = data.body.data.movies
-        // movies.forEach((item) => {
-          // use reduce: array to string
-          // item.actors = item.actors.reduce((acc, item) => acc + ' ' + item)
-          // item.movieId = item.movie_id
-        // })
-        // console.log(movies)
-        // this.movielist = movies
+        const articles = data.body.data.articles
+        articles.forEach(element => {
+          // todo :
+          // use data update this.items 
+        })
       })
-    // todo: 向后台异步获取博客数据存入items，并使用nextTick进行处理。
-    // console.log('list created')
   }
-  // methods: {
-  //   jumpToBlog (item) {
-  //     console.log(item.aid)
-  //   }
-  // }
 }
 </script>
 <style>
