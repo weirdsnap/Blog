@@ -34,14 +34,13 @@ func apiGetByIdHandler(formatter *render.Render) http.HandlerFunc {
 	}
 }
 
-
 func apiGetAllHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		// func (*ArticleInfoAtomicService) FindAll() []ArticleInfo {}
 		if articles := entities.ArticleInfoService.FindAll(); articles != nil {
 			formatter.JSON(w, http.StatusOK, struct {
-				ARTICLES struct `json:"articles"`
-			}{ARTICLES: a})
+				ARTICLES []entities.ArticleInfo `json:"articles"`
+			}{ARTICLES: articles})
 		}
 	}
 }
