@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"time"
 	"github.com/unrolled/render"
 	"github.com/weirdsnap/Blog/entities"
 	"net/http"
@@ -51,10 +52,15 @@ func apiSetOneHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		req.ParseForm()
 		// todo: create the unique id
+		// t := time.Now()
+		// fmt.Println(t.Unix()) // 1970 s 
+		// timestamp := strconv.FormatInt(t.UTC().UnixNano(), 10)
+		// fmt.Println(timestamp) // more 
+		id := time.Now().Unix(); 
 		t := req.PostFormValue("title")
 		c := req.PostFormValue("class")
 		s := req.PostFormValue("content")
-		a := entities.NewArticleInfo(entities.ArticleInfo{AID: 126, Title: t, Class: c, Content: s})
+		a := entities.NewArticleInfo(entities.ArticleInfo{AID: int(id), Title: t, Class: c, Content: s})
 		entities.ArticleInfoService.Save(a)
 	}
 }
