@@ -27,7 +27,17 @@ Resources related to articles in the API.
     }
   }
 }]
-
+// test
+{
+  "articles": [
+    {
+      "AID": 123,
+      "Title": "asd",
+      "Class": "asd",
+      "Content": "asd"
+    }
+  ]
+}
 
 ### Get One Article By Id [GET]
 
@@ -45,3 +55,10 @@ Resources related to articles in the API.
     }
   }
 }]
+
+// test
+
+{
+  "content": "asd",
+  "id": "123"
+}

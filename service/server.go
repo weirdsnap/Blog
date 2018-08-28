@@ -41,6 +41,7 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 	}
 	
 	// api 
+	mx.HandleFunc("/api/setone", apiSetOneHandler(formatter)).Methods("POST")
 	// get one article by id, return an article {aid,title,class,content}
 	mx.HandleFunc("/api/getbyid/", apiGetByIdHandler(formatter)).Methods("GET")
 	// get all article, return all [{aid,title,class,content},...]

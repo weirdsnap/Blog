@@ -13,13 +13,13 @@ var ArticleInfoService = ArticleInfoAtomicService{}
 // Save
 // function
 // on the *ArticleInfoAtomicService
-func (*ArticleInfoAtomicService) Save(u *ArticleInfo) error {
+func (*ArticleInfoAtomicService) Save(a *ArticleInfo) error {
 
 	tx, err := mydb.Begin()
 	checkErr(err)
 	// fmt.Println("开始保存")
 	dao := articleInfoDao{tx}
-	err = dao.Save(u)
+	err = dao.Save(a)
 
 	if err == nil {
 		tx.Commit()

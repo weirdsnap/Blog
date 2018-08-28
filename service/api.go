@@ -8,6 +8,8 @@ import (
 	"strconv"
 )
 
+
+
 func apiGetByIdHandler(formatter *render.Render) http.HandlerFunc {
 
 	return func(w http.ResponseWriter, req *http.Request) {
@@ -42,5 +44,17 @@ func apiGetAllHandler(formatter *render.Render) http.HandlerFunc {
 				ARTICLES []entities.ArticleInfo `json:"articles"`
 			}{ARTICLES: articles})
 		}
+	}
+}
+
+func apiSetOneHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		req.ParseForm()
+		// todo: create the unique id
+		t := req.PostFormValue("title")
+		c := req.PostFormValue("class")
+		s := req.PostFormValue("content")
+		a := entities.NewArticleInfo(entities.ArticleInfo{AID: 126, Title: t, Class: c, Content: s})
+		entities.ArticleInfoService.Save(a)
 	}
 }
