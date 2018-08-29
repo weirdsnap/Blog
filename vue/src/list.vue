@@ -19,9 +19,10 @@ export default {
     this.$http.get('/test/api/getall') // for dev test
       .then((data) => {
         const articles = data.body.data.articles
+        console.log(articles) // ----------------------------------- console log -----------------------------------
         articles.forEach(element => {
           // todo :
-          // use data update this.items 
+          // use data update this.items
         })
       })
   }

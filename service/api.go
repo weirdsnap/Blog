@@ -50,6 +50,7 @@ func apiGetAllHandler(formatter *render.Render) http.HandlerFunc {
 
 func apiSetOneHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
+		fmt.Println(req)
 		req.ParseForm()
 		// todo: create the unique id
 		// t := time.Now()
@@ -57,10 +58,12 @@ func apiSetOneHandler(formatter *render.Render) http.HandlerFunc {
 		// timestamp := strconv.FormatInt(t.UTC().UnixNano(), 10)
 		// fmt.Println(timestamp) // more 
 		id := time.Now().Unix(); 
-		t := req.PostFormValue("title")
+		// t := req.PostFormValue("title")
+		t := req.Form["title"]
+		fmt.Println(t)
 		c := req.PostFormValue("class")
 		s := req.PostFormValue("content")
-		a := entities.NewArticleInfo(entities.ArticleInfo{AID: int(id), Title: t, Class: c, Content: s})
+		a := entities.NewArticleInfo(entities.ArticleInfo{AID: int(id), Title: t[0], Class: c, Content: s})
 		entities.ArticleInfoService.Save(a)
 	}
 }

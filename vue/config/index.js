@@ -16,7 +16,8 @@ module.exports = {
     // use this `^/test` match any and change to `/`
     proxyTable: {
       '/test': {
-        target: 'http://weirdsnap.top:8888', // set the host and port for test,and dont forget the http
+        target: 'http://localhost:80', // set the host and port for test,and dont forget the http
+        // target: 'http://weirdsnap.top:8888', // set the host and port for test,and dont forget the http
         changeOrigin: true,
         pathRewrite: {
           '^/test': '/'
