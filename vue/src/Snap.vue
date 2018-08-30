@@ -12,10 +12,10 @@
         </div>
       </aside>
       <div>
-        <input type="text" placeholder="title" v-model="article.title">
+        <!-- <input type="text" placeholder="title" v-model="article.title">
         <input type="text" placeholder="class" v-model="article.class">
         <textarea name="content" id="contentarea" cols="50" rows="10" v-model="article.content"></textarea>
-        <button v-on:click="submit()">submit</button>
+        <button v-on:click="submit()">submit</button> -->
       </div>
   </div>
 </template>
@@ -49,8 +49,8 @@ export default {
   },
   methods: {
     submit () {
-      // this.$http.post('/api/setone', this.article) // for build
-      this.$http.post('/test/api/setone', this.article)
+      this.$http.post('/api/setone', this.article) // for build
+      // this.$http.post('/test/api/setone', this.article)
       // this.$http.post('/test/api/setone', this.article, {
         // emulateJSON: true
       // }) // for dev test

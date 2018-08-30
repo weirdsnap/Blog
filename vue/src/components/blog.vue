@@ -45,8 +45,8 @@ export default {
         that.body = marked(str)
       }
     }
-    xmlhttp.open('GET', '/test/api/getbyid/?id=' + aId, true) // when test
-    // xmlhttp.open('GET', '/api/?id=' + aId, true) // when build
+    // xmlhttp.open('GET', '/test/api/getbyid/?id=' + aId, true) // when test
+    xmlhttp.open('GET', '/api/getbyid/?id=' + aId, true) // when build
     xmlhttp.send()
   }
 }
