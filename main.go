@@ -18,7 +18,7 @@ func main() {
 	if len(port) == 0 {
 		port = PORT
 	}
-	// use flap "-p" to set port if p's value exist
+	// use flag "-p" to set port if p's value exist
 	pPort := flag.StringP("port", "p", port, "PORT for httpd listening")
 	flag.Parse()
 	if len(*pPort) != 0 {

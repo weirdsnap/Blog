@@ -8,7 +8,8 @@ Vue + golang 制作自己的博客
 
 ## 服务端
 
-Golang + negroni
+Golang服务器
 
-### 数据访问
+## 记录
 
+[开发日志](./开发日志.md)
