@@ -11,18 +11,20 @@
 export default {
   data () {
     return {
-      items: [{aid: '201801', title: '一篇博客的标题'}, {aid: '201802', title: '另一篇博客的标题'}]
+      items: []
+      // items: [{aid: '201801', title: '一篇博客的标题'}, {aid: '201802', title: '另一篇博客的标题'}]
     }
   },
   created () {
     // this.$http.get('/api/getall') // for build
     this.$http.get('/test/api/getall') // for dev test
       .then((data) => {
-        const articles = data.body.data.articles
+        const articles = data.body.articles
         console.log(articles) // ----------------------------------- console log -----------------------------------
         articles.forEach(element => {
           // todo :
           // use data update this.items
+          this.items.push({aid: element.AID, title: element.Title, class: element.Class, interview: element.Content})
         })
       })
   }

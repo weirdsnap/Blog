@@ -7,6 +7,8 @@ import (
 	"github.com/weirdsnap/Blog/entities"
 	"net/http"
 	"strconv"
+	"encoding/json"
+	"io/ioutil"
 )
 
 
@@ -50,20 +52,40 @@ func apiGetAllHandler(formatter *render.Render) http.HandlerFunc {
 
 func apiSetOneHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		fmt.Println(req)
-		req.ParseForm()
+		id := time.Now().Unix(); 
+		// fmt.Println(req)
 		// todo: create the unique id
 		// t := time.Now()
 		// fmt.Println(t.Unix()) // 1970 s 
 		// timestamp := strconv.FormatInt(t.UTC().UnixNano(), 10)
 		// fmt.Println(timestamp) // more 
-		id := time.Now().Unix(); 
+		var article map[string]interface{}
+		body, _ := ioutil.ReadAll(req.Body)
+		json.Unmarshal(body, &article)
+		t := article["title"].(string) // type assertion
+		c := article["class"].(string)
+		s := article["content"].(string)
+		if len(t) == 0 || len(c) == 0 || len(s) == 0 {
+			formatter.JSON(w, http.StatusBadRequest, struct {
+				ERROR string `json:"error"`
+			}{ERROR: "wrong request data"})
+		} else {
+			a := entities.NewArticleInfo(entities.ArticleInfo{AID: int(id), Title: t, Class: c, Content: s})
+			err := entities.ArticleInfoService.Save(a)
+			if err == nil {
+				formatter.JSON(w, http.StatusOK, struct {
+					ID int `json:"id"`
+				}{ID: int(id)})
+			} else {
+				formatter.JSON(w, http.StatusBadRequest, struct {
+					ERROR string `json:"error"`
+				}{ERROR: "something wrong in database"})
+			}
+		}
+		// req.ParseForm()
 		// t := req.PostFormValue("title")
-		t := req.Form["title"]
-		fmt.Println(t)
-		c := req.PostFormValue("class")
-		s := req.PostFormValue("content")
-		a := entities.NewArticleInfo(entities.ArticleInfo{AID: int(id), Title: t[0], Class: c, Content: s})
-		entities.ArticleInfoService.Save(a)
+		// c := req.PostFormValue("class")
+		// s := req.PostFormValue("content")
+		// a := entities.NewArticleInfo(entities.ArticleInfo{AID: int(id), Title: t[0], Class: c, Content: s})
 	}
 }
