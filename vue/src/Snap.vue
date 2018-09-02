@@ -50,7 +50,7 @@ export default {
   methods: {
     submit () {
       this.$http.post('/api/setone', this.article) // for build
-      // this.$http.post('/test/api/setone', this.article)
+      // this.$http.post('/test/api/setone', this.article) // for dev test
       // this.$http.post('/test/api/setone', this.article, {
         // emulateJSON: true
       // }) // for dev test

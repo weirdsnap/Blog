@@ -26,7 +26,8 @@ export default {
           // use data update this.items
           this.items.push({aid: element.AID, title: element.Title, class: element.Class, interview: element.Content})
         })
-      })
+      }
+      )
   }
 }
 </script>
