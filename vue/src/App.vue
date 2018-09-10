@@ -71,6 +71,10 @@ body {
   margin: 0;
 }
 
+body::-webkit-scrollbar {
+  display:none
+}
+
 @media screen and (min-device-width: 600px){
   body {
     background-size:100%;

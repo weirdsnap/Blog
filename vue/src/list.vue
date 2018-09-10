@@ -16,8 +16,8 @@ export default {
     }
   },
   created () {
-    this.$http.get('/api/getall') // for build
-    // this.$http.get('/test/api/getall') // for dev test
+    // this.$http.get('/api/getall') // for build
+    this.$http.get('/test/api/getall') // for dev test
       .then((data) => {
         const articles = data.body.articles
         console.log(articles) // ----------------------------------- console log -----------------------------------

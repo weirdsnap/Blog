@@ -5,6 +5,7 @@ html, body, #app {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 
@@ -34,7 +35,7 @@ input:focus {
 
   *.left {
     height: 100%;
-    background-color: #66ff99;
+    background-color: #a1a1a1;
   }
   *.main {
     height: 0;
@@ -42,25 +43,25 @@ input:focus {
   }
 }
 
-@media  screen and (min-device-width: 425px) and (max-device-width: 800px) {
+@media  screen and (min-device-width: 425px) and (max-device-width: 767px) {
   #app {
     background-color: #aaaaff;
   }
 }
 
-@media  screen and (min-device-width: 800px) {
+@media  screen and (min-device-width: 768px) {
   /* #app {
     background-color: #aaffaa;
   } */
   *.left {
     width: 25%;
     height: 100%;
-    background-color: #66ff99;
+    background-color: #cccccc;
   }
   *.main {
     width: 75%;
     height: 100%; 
-    background-color: #ffaaaa;
+    background-color: #f1f1f1;
   }
 }
 
@@ -70,23 +71,79 @@ input:focus {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  color: whitesmoke;
 }
+
+#interview p {
+  padding:0 10px 0 10px;
+  margin-top: -5rem;
+  margin-bottom: 5rem;
+}
+
 
 #searchbar {
   width:100%;
-  height: 4rem;
+  height: 3rem;
   background-color: #aaaaaa;
 }
 
 #searchbar input {
-  height: 3rem;
+  height: 2.5rem;
   width: 80%;
   box-sizing: border-box;
-  margin: 0.5rem 10% 0.5rem 10%;
+  margin: 0.25rem 10% 0.25rem 10%;
   padding: 0 1rem;
   border: gray 0.1rem solid;
   border-radius: 1rem;
 }
 
+#navbar {
+  width:100%;
+  height: 3rem;
+  background-color: #aaaaaa;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* 
+#mainpage>div{
+  overflow: hidden;
+} */
+
+ul {
+  height: 90%;
+  list-style: none;
+  /* background-color: #fff; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  margin: 0rem;
+  padding: 1rem 0 0 0;
+  overflow-y: scroll;
+  border-radius: 1rem;
+  scroll-behavior: smooth;
+}
+ul::-webkit-scrollbar {display:none}
+
+ul li{
+  height: 10rem;
+  width: 10rem;
+  margin: 0 0 1rem 1rem ;
+  background-color: #afffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+}
 
 
+li p{
+  height: 3rem;
+  width: 9rem;
+  word-wrap:break-word;
+  word-break:break-all;
+  background-color: #aaaaff;
+}
